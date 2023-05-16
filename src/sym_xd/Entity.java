@@ -27,5 +27,6 @@ public class Entity implements Point{
         this.ID_class = a;
     }
     
+    //cykpyk
 }
 
