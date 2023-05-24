@@ -13,6 +13,8 @@ public class Symul {
     protected int y;
     
     Random variable = new Random();
+    SuperHuman superhum = new SuperHuman();
+    SuperZombie superzom = new SuperZombie();
     
     protected void Map(int x, int y){
         this.x = x;
@@ -67,7 +69,7 @@ public class Symul {
             Objects.add(zombie);
         }
         
-        for (int i=0; i<(h+z+s_h+s_z); i++){
+        for (int i=0; i<(h+z); i++){
             if (Objects.get(i).ID_class == 0)
             {
                 System.out.println("Obiekt human, ID klasy = " + Objects.get(i).ID_class);
@@ -75,14 +77,6 @@ public class Symul {
             if (Objects.get(i).ID_class == 1)
             {
                 System.out.println("Obiekt zombie, ID klasy = " + Objects.get(i).ID_class);
-            }
-            if (Objects.get(i).ID_class == 2)
-            {
-                System.out.println("Obiekt super human, ID klasy = " + Objects.get(i).ID_class);
-            }
-            if (Objects.get(i).ID_class == 3)
-            {
-                System.out.println("Obiekt super zombie, ID klasy = " + Objects.get(i).ID_class);
             }
             System.out.println("Koordynaty obiektu - x: " + Objects.get(i).x_cord() + ", y: " + Objects.get(i).y_cord());
             System.out.println("ID obiektu - " + Objects.get(i).ID);
@@ -190,8 +184,9 @@ public class Symul {
                 }
             }
             
-            for (int i=0; i<(h+z+s_h+s_z); i++)
+            for (int i=0; i<(h+z+s_h+s_z); i++)                                 //system teamupowania
             {
+                int pom = 0;
                 for (int j=(i+1); j<(h+z+s_h+s_z); j++)
                 {
                     if (Objects.get(i).x_cord() == Objects.get(j).x_cord())
@@ -202,25 +197,78 @@ public class Symul {
                             {
                                 if (Objects.get(i).ID_class == Objects.get(j).ID_class)
                                 {
-                                    //teamup
-                                }
-                                else
-                                {
-                                    //fight
-                                }
-                            }
-                            else
-                            {
-                                if (Objects.get(i).ID_class != Objects.get(j).ID_class)
-                                {
-                                    //fight
-                                }
+                                    if (Objects.get(i).ID_class == 0)
+                                    {
+                                        pom = 1;
+                                        if (s_h != 0){
+                                            for (int k=0; k<(s_h); k++)
+                                            {
+                                                pom = pom++;
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Objects.get(i).ID_class == 1)
+                                        {
+                                            pom = 1;
+                                            if (s_z != 0){
+                                                for (int k=0; k<(s_z); k++)
+                                                {
+                                                    pom = pom++;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                    if (Objects.get(i).ID_class == 0)
+                                    {
+                                        superhum.team_up(Objects.get(i).x_cord(), Objects.get(i).y_cord(), Objects.get(i).pwr, Objects.get(j).pwr, Objects.get(i).ID_class, pom);
+                                        SuperHuman superhuman;
+                                        superhuman = superhum.superh;
+                                        Objects.set(i, superhuman);
+                                        map[Objects.get(i).x_cord()][Objects.get(i).y_cord()] = "H";
+                                        Objects.remove(j);
+                                        h = h - 2;
+                                        s_h = s_h +1;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        superzom.team_up(Objects.get(i).x_cord(), Objects.get(i).y_cord(), Objects.get(i).pwr, Objects.get(j).pwr, Objects.get(i).ID_class, pom);
+                                        SuperZombie superzombie;
+                                        superzombie = superzom.superz;
+                                        Objects.set(i, superzombie);
+                                        map[Objects.get(i).x_cord()][Objects.get(i).y_cord()] = "Z";
+                                        Objects.remove(j);
+                                        z = z - 2;
+                                        s_z = s_z +1;
+                                        break;
+                                    }
+                                }   
                             }
                         }  
                     }
                 }
             }
-            
+/*            
+            for (int i=0; i<(h+z+s_h+s_z); i++)                                 //system walki
+            {
+                for (int j=(i+1); j<(h+z+s_h+s_z); j++)
+                {
+                    if (Objects.get(i).x_cord() == Objects.get(j).x_cord())
+                    {
+                        if (Objects.get(i).x_cord() == Objects.get(j).x_cord())
+                        {
+                            if (Objects.get(i).ID_class != Objects.get(j).ID_class)
+                            {
+                                //fight
+                            }
+                        }  
+                    }
+                }
+            }
+*/            
             for (int i=0; i<x; i++){                                                
             System.out.print((i + 1) + " ");
             for (int j=0; j<y; j++){

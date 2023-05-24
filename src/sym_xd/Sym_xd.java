@@ -21,7 +21,7 @@ public class Sym_xd {
         
         symulacja.Map(x,y);                                                     //przypisanie wielkosci mapy   
         symulacja.Objects(h,z);                                                 //przypisanie ilosci obiektow
-        symulacja.Sym();                                                     //stworzenie obiektow
+        symulacja.Sym();                                                       //stworzenie obiektow
     }
     
 }
