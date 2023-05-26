@@ -54,7 +54,7 @@ public class Symul {
         for (int i=0; i<h; i++) {                                               
             Human human = new Human();
             Point position_human = human;
-            position_human.coordinates(1, 1);
+            position_human.coordinates(i+1,i+2);
             human.ID_class(0);
             human.ID((i+1));
             Objects.add(human);
@@ -63,7 +63,7 @@ public class Symul {
         for (int i=0; i<z; i++) {                                               
             Zombie zombie = new Zombie();
             Point position_zombie = zombie;
-            position_zombie.coordinates((x), (y));
+            position_zombie.coordinates((x), (y-i));
             zombie.ID_class(1);
             zombie.ID((i+1));
             Objects.add(zombie);
@@ -191,7 +191,7 @@ public class Symul {
                 {
                     if (Objects.get(i).x_cord() == Objects.get(j).x_cord())
                     {
-                        if (Objects.get(i).x_cord() == Objects.get(j).x_cord())
+                        if (Objects.get(i).y_cord() == Objects.get(j).y_cord())
                         {
                             if (Objects.get(i).ID_class == 0 || Objects.get(i).ID_class == 1)
                             {
@@ -251,24 +251,82 @@ public class Symul {
                     }
                 }
             }
-/*            
+            
             for (int i=0; i<(h+z+s_h+s_z); i++)                                 //system walki
             {
                 for (int j=(i+1); j<(h+z+s_h+s_z); j++)
                 {
                     if (Objects.get(i).x_cord() == Objects.get(j).x_cord())
                     {
-                        if (Objects.get(i).x_cord() == Objects.get(j).x_cord())
+                        if (Objects.get(i).y_cord() == Objects.get(j).y_cord())
                         {
-                            if (Objects.get(i).ID_class != Objects.get(j).ID_class)
+                            if (Objects.get(i).ID_class == 0)              //walka human vs zombie/superzombie
                             {
-                                //fight
+                                if (Objects.get(j).ID_class == 1)
+                                {
+                                    if (Objects.get(i).pwr > Objects.get(j).pwr)
+                                    {
+                                        Objects.remove(j);
+                                        z = z - 1;
+                                    }
+                                    else
+                                    {
+                                        Objects.remove(i);
+                                        h = h - 1;
+                                    }
+                                }
+                                if (Objects.get(j).ID_class == 3)
+                                {
+                                    if (Objects.get(i).pwr > Objects.get(j).pwr)
+                                    {
+                                        Objects.remove(j);
+                                        s_z = s_z - 1;
+                                    }
+                                    else
+                                    {
+                                        Objects.remove(i);
+                                        h = h - 1;
+                                    }
+                                }
+                            }
+                            if (Objects.get(i).ID_class == 2)              //walska superhuman vs zombie/superzombie
+                            {
+                                if (Objects.get(j).ID_class == 1)
+                                {
+                                    if (Objects.get(i).pwr > Objects.get(j).pwr)
+                                    {
+                                        Objects.remove(j);
+                                        z = z - 1;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Objects.remove(i);
+                                        s_h = s_h - 1;
+                                        break;
+                                    }
+                                }
+                                if (Objects.get(j).ID_class == 3)
+                                {
+                                    if (Objects.get(i).pwr > Objects.get(j).pwr)
+                                    {
+                                        Objects.remove(j);
+                                        s_h = s_h - 1;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Objects.remove(i);
+                                        s_z = s_z - 1;
+                                        break;
+                                    }
+                                }
                             }
                         }  
                     }
                 }
             }
-*/            
+            
             for (int i=0; i<x; i++){                                                
             System.out.print((i + 1) + " ");
             for (int j=0; j<y; j++){
