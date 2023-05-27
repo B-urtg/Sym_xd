@@ -4,7 +4,7 @@ public class Entity implements Point{
     
     protected int x;
     protected int y;
-    protected int pwr = (int)Math.floor(Math.random() * (10) + 1);
+    protected int pwr = (int)Math.floor(Math.random() * (100) + 1);
     protected int ID_class;
     protected int ID; 
     protected SuperHuman superh;

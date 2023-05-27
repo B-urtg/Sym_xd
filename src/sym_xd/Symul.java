@@ -7,10 +7,13 @@ public class Symul {
     
     protected int h;
     protected int z;
-    protected int s_h;
-    protected int s_z;
+    protected int s_h = 0;
+    protected int s_z = 0;
     protected int x;
     protected int y;
+    private int humans_amount;
+    private int zombies_amount;
+    private int tura = 1;
     
     Random variable = new Random();
     SuperHuman superhum = new SuperHuman();
@@ -36,6 +39,9 @@ public class Symul {
             Arrays.fill(row, " ");   
         }
         
+        System.out.println("Mapa:");
+        System.out.println();
+        
         for (int i=0; i<x; i++){                                                
             System.out.print((i + 1) + " ");
             for (int j=0; j<y; j++){
@@ -49,6 +55,12 @@ public class Symul {
         }
         
         System.out.println();
+        System.out.println("Legenda:");
+        System.out.println("h - human");
+        System.out.println("H - super human");
+        System.out.println("z - zombie");
+        System.out.println("Z - super zombie");
+        System.out.println("X - walka");
         System.out.println();
                
         for (int i=0; i<h; i++) {                                               
@@ -77,23 +89,26 @@ public class Symul {
             if (Objects.get(i).ID_class == 1)
             {
                 System.out.println("Obiekt zombie, ID klasy = " + Objects.get(i).ID_class);
+                //System.out.println("Szansa zarażenia " + Objects.get(i).);
             }
-            System.out.println("Koordynaty obiektu - x: " + Objects.get(i).x_cord() + ", y: " + Objects.get(i).y_cord());
+            //System.out.println("Koordynaty obiektu - x: " + Objects.get(i).x_cord() + ", y: " + Objects.get(i).y_cord());
             System.out.println("ID obiektu - " + Objects.get(i).ID);
             System.out.println("Sila obiektu - " + Objects.get(i).pwr);
             System.out.println();
 
         }
         
-        for (int t=0; t<4; t++)
+        do
         {
+            humans_amount = h + s_h;
+            zombies_amount = z + s_z;
             
             for (String[] row : map)
             {
                 Arrays.fill(row, " ");   
             }
             
-            System.out.println("Tura " + (t+1));
+            System.out.println("Tura " + (tura));
             System.out.println();
             
             for (int i=0; i<(h+z+s_h+s_z); i++)
@@ -227,10 +242,10 @@ public class Symul {
                                         SuperHuman superhuman;
                                         superhuman = superhum.superh;
                                         Objects.set(i, superhuman);
-                                        map[Objects.get(i).x_cord()][Objects.get(i).y_cord()] = "H";
+                                        //map[Objects.get(i).x_cord()][Objects.get(i).y_cord()] = "H";
                                         Objects.remove(j);
                                         h = h - 2;
-                                        s_h = s_h +1;
+                                        s_h = s_h + 1;
                                         break;
                                     }
                                     else
@@ -239,10 +254,10 @@ public class Symul {
                                         SuperZombie superzombie;
                                         superzombie = superzom.superz;
                                         Objects.set(i, superzombie);
-                                        map[Objects.get(i).x_cord()][Objects.get(i).y_cord()] = "Z";
+                                        //map[Objects.get(i).x_cord()][Objects.get(i).y_cord()] = "Z";
                                         Objects.remove(j);
                                         z = z - 2;
-                                        s_z = s_z +1;
+                                        s_z = s_z + 1;
                                         break;
                                     }
                                 }   
@@ -260,6 +275,7 @@ public class Symul {
                     {
                         if (Objects.get(i).y_cord() == Objects.get(j).y_cord())
                         {
+                            map[(Objects.get(i).y_cord())-1][(Objects.get(i).x_cord())-1] = "X";
                             if (Objects.get(i).ID_class == 0)              //walka human vs zombie/superzombie
                             {
                                 if (Objects.get(j).ID_class == 1)
@@ -268,11 +284,13 @@ public class Symul {
                                     {
                                         Objects.remove(j);
                                         z = z - 1;
+                                        break;
                                     }
                                     else
                                     {
                                         Objects.remove(i);
                                         h = h - 1;
+                                        break;
                                     }
                                 }
                                 if (Objects.get(j).ID_class == 3)
@@ -281,11 +299,13 @@ public class Symul {
                                     {
                                         Objects.remove(j);
                                         s_z = s_z - 1;
+                                        break;
                                     }
                                     else
                                     {
                                         Objects.remove(i);
                                         h = h - 1;
+                                        break;
                                     }
                                 }
                             }
@@ -341,8 +361,20 @@ public class Symul {
             
             System.out.println();
             System.out.println();
+            
+            tura = tura + 1;
+            
         }
-                
+        while(humans_amount != 0 && zombies_amount != 0);
+        
+        if (zombies_amount == 0)
+        {
+            System.out.println("Zwyciezaja ludzie po " + (tura - 1) + " turach!");
+        }
+        else
+        {
+            System.out.println("Zwyciezaja zombie po " + (tura - 1) + " turach!");
+        }
     }
     
 }
