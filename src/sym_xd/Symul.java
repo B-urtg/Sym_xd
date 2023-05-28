@@ -125,7 +125,7 @@ public class Symul {
                     int scavenge_chance = variable.random;
                     if (scavenge_chance > 75)
                     {
-                        //Objects.get(i).
+                        .scavenge();
                         new_x = Objects.get(i).x_cord();
                         new_y = Objects.get(i).y_cord();
                         if (Objects.get(i).ID_class == 0)

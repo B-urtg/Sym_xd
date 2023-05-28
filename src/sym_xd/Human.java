@@ -4,7 +4,7 @@ public class Human extends Entity{
     
     private int resources;
     
-    private void scavenge(){
+    @Override protected void scavenge(){
       resources+=1;
       if(resources>=3){
           pwr+=1;

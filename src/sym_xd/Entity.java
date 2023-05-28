@@ -15,6 +15,9 @@ public class Entity implements Point{
         this.x = a;
         this.y = b;
     }
+    protected void scavenge(){
+        
+    }
     
     protected int x_cord(){
         return this.x;

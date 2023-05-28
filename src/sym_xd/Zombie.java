@@ -8,6 +8,7 @@ public class Zombie extends Entity{
         this.ID = a;
     }
     
+    
     protected int Infect_chance(){
         return this.infect_chance;
     }
