@@ -15,6 +15,11 @@ public class Entity implements Point{
         this.x = a;
         this.y = b;
     }
+    
+    protected void infect(){
+        
+    }
+    
     protected void scavenge(){
         
     }

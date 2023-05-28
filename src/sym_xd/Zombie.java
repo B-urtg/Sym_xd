@@ -7,6 +7,9 @@ public class Zombie extends Entity{
     protected void ID(int a){
         this.ID = a;
     }
+    @Override protected void infect(){
+        pwr+=2;
+    }
     
     
     protected int Infect_chance(){
