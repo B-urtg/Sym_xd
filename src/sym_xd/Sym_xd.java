@@ -10,12 +10,24 @@ public class Sym_xd {
         Scanner input = new Scanner(System.in);
         
         System.out.println("Podaj rozmiar mapy koordynatami x, y: ");
-        int x = 6/*input.nextInt()*/;
-        int y = 6/*input.nextInt()*/;
+        int x = input.nextInt();
+        int y = input.nextInt();
         
         System.out.println("Podaj ilosc obiektow kolejno human i zombie: ");
-        int h = 3/*input.nextInt()*/;
-        int z = 3/*input.nextInt()*/;
+        boolean validInput = false;
+        int h = input.nextInt();
+        int z = input.nextInt();
+        
+        while (!validInput) {
+            h = input.nextInt();
+            z = input.nextInt();
+            
+            if (h + z >= x * y) {
+                validInput = true;
+            } else {
+                System.out.println("Suma obiektów (human + zombie) musi być większa lub równa iloczynowi x i y. Spróbuj ponownie.");
+            }
+        }
         
         System.out.println();
         
