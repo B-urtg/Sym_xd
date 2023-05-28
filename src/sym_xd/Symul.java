@@ -125,7 +125,7 @@ public class Symul {
                     int scavenge_chance = variable.random;
                     if (scavenge_chance > 75)
                     {
-                        //.scavenge(i);
+                        Objects.get(i).scavenge();
                         new_x = Objects.get(i).x_cord();
                         new_y = Objects.get(i).y_cord();
                         if (Objects.get(i).ID_class == 0)
@@ -288,7 +288,11 @@ public class Symul {
                                     }
                                     else
                                     {
-                                        //Objects.infect(j);
+                                        int roll =variable.random;
+                                        if (Objects.get(j).Infect_chance() >= roll){
+                                            Objects.get(j).infect();
+                                        }
+                                        
                                         Objects.remove(i);
                                         h = h - 1;
                                         break;

@@ -12,6 +12,7 @@ public class Zombie extends Entity{
     }
     
     
+    @Override
     protected int Infect_chance(){
         return this.infect_chance;
     }

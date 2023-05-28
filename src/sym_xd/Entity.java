@@ -9,11 +9,14 @@ public class Entity implements Point{
     protected int ID; 
     protected SuperHuman superh;
     protected SuperZombie superz;
-    
+    protected int infect_chance;
     @Override
     public void coordinates(int a, int b){
         this.x = a;
         this.y = b;
+    }
+    protected int Infect_chance(){
+        return this.infect_chance;
     }
     
     protected void infect(){
