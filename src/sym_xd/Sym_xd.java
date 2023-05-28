@@ -14,10 +14,9 @@ public class Sym_xd {
         int y = input.nextInt();
         
         System.out.println("Podaj ilosc obiektow kolejno human i zombie: ");
-        boolean validInput = false;
-        int h = input.nextInt();
-        int z = input.nextInt();
+        int h, z;
         
+        boolean validInput = false;
         while (!validInput) {
             h = input.nextInt();
             z = input.nextInt();
