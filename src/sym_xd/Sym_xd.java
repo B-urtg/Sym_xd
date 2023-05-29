@@ -9,9 +9,8 @@ public class Sym_xd {
         Symul symulacja = new Symul();
         Scanner input = new Scanner(System.in);
         
-        System.out.println("Podaj rozmiar mapy koordynatami x, y: ");
+        System.out.println("Podaj rozmiar kwadratowej mapy X*X: ");
         int x = input.nextInt();
-        int y = input.nextInt();
         
         System.out.println("Podaj ilosc obiektow kolejno human i zombie: ");
         int h = 0, z = 0;
@@ -21,18 +20,18 @@ public class Sym_xd {
             h = input.nextInt();
             z = input.nextInt();
             
-            if (h + z <= x * y) {
+            if (h + z <= (x * x)) {
                 validInput = true;
             } else {
-                System.out.println("Suma obiektów (human + zombie) musi być mniejsza lub równa iloczynowi x i y. Spróbuj ponownie.");
+                System.out.println("Suma obiektow (human + zombie) musi byc mniejsza lub rwwna iloczynowi x i y. Sprobuj ponownie.");
             }
         }
         
         System.out.println();
         
-        symulacja.Map(x,y);                                                     //przypisanie wielkosci mapy   
+        symulacja.Map(x,x);                                                     //przypisanie wielkosci mapy   
         symulacja.Objects(h,z);                                                 //przypisanie ilosci obiektow
-        symulacja.Sym();                                                       //stworzenie obiektow
+        symulacja.Sym();                                                        //stworzenie obiektow
     }
     
 }

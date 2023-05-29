@@ -42,15 +42,15 @@ public class Symul {
         System.out.println("Mapa:");
         System.out.println();
         
-        for (int i=0; i<x; i++){                                                
-            System.out.print((i + 1) + " ");
-            for (int j=0; j<y; j++){
+        for (int i=0; i<y; i++){                                                
+            System.out.print((i + 1) + "  ");
+            for (int j=0; j<x; j++){
                 System.out.print("[" + map[i][j] + "] ");
             }
             System.out.println();
         }        
         System.out.print("   ");
-        for (int i=0; i<y; i++){
+        for (int i=0; i<x; i++){
             System.out.print((i+1) + "   ");
         }
         
@@ -66,7 +66,11 @@ public class Symul {
         for (int i=0; i<h; i++) {                                               
             Human human = new Human();
             Point position_human = human;
-            position_human.coordinates(i+1,i+2);
+            variable.los(x-1);
+            int x = variable.random;
+            variable.los(x-1);
+            int y = variable.random;
+            position_human.coordinates(x,y);
             human.ID_class(0);
             human.ID((i+1));
             Objects.add(human);
@@ -75,7 +79,11 @@ public class Symul {
         for (int i=0; i<z; i++) {                                               
             Zombie zombie = new Zombie();
             Point position_zombie = zombie;
-            position_zombie.coordinates((x), (y-i));
+            variable.los(x-1);
+            int x = variable.random;
+            variable.los(x-1);
+            int y = variable.random;
+            position_zombie.coordinates(x, y);
             zombie.ID_class(1);
             zombie.ID((i+1));
             Objects.add(zombie);
@@ -91,7 +99,7 @@ public class Symul {
                 System.out.println("Obiekt zombie, ID klasy = " + Objects.get(i).ID_class);
                 //System.out.println("Szansa zarażenia " + Objects.get(i).);
             }
-            //System.out.println("Koordynaty obiektu - x: " + Objects.get(i).x_cord() + ", y: " + Objects.get(i).y_cord());
+            System.out.println("Koordynaty obiektu - x: " + Objects.get(i).x_cord() + ", y: " + Objects.get(i).y_cord());
             System.out.println("ID obiektu - " + Objects.get(i).ID);
             System.out.println("Sila obiektu - " + Objects.get(i).pwr);
             System.out.println();
@@ -172,7 +180,6 @@ public class Symul {
                 if (Objects.get(i).ID_class == 0)
                 {
                     System.out.println("Obiekt human " + Objects.get(i).ID + ", koordynaty - x: " + Objects.get(i).x_cord() + ", y: " + Objects.get(i).y_cord());
-                    //System.out.println("Ilosc zasobow - " + Objects.get(i).resources);
                     System.out.println("Sila obiektu - " + Objects.get(i).pwr);
                     System.out.println();
                 }
