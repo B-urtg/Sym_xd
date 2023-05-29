@@ -9,6 +9,7 @@ public class Sym_xd {
         Symul symulacja = new Symul();
         Scanner input = new Scanner(System.in);
         
+
         System.out.println("Podaj rozmiar kwadratowej mapy X*X: ");
         int x = input.nextInt();
         
