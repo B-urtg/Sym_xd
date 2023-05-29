@@ -9,9 +9,9 @@ public class Sym_xd {
         Symul symulacja = new Symul();
         Scanner input = new Scanner(System.in);
         
-        System.out.println("Podaj rozmiar mapy koordynatami x, y: ");
+        System.out.println("Podaj rozmiar mapy");
         int x = input.nextInt();
-        int y = input.nextInt();
+        int y = x;
         
         System.out.println("Podaj ilosc obiektow kolejno human i zombie: ");
         int h = 0, z = 0;
