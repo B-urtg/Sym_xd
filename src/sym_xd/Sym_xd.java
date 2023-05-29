@@ -14,17 +14,17 @@ public class Sym_xd {
         int y = input.nextInt();
         
         System.out.println("Podaj ilosc obiektow kolejno human i zombie: ");
-        int h, z;
+        int h = 0, z = 0;
         
         boolean validInput = false;
         while (!validInput) {
             h = input.nextInt();
             z = input.nextInt();
             
-            if (h + z >= x * y) {
+            if (h + z <= x * y) {
                 validInput = true;
             } else {
-                System.out.println("Suma obiektów (human + zombie) musi być większa lub równa iloczynowi x i y. Spróbuj ponownie.");
+                System.out.println("Suma obiektów (human + zombie) musi być mniejsza lub równa iloczynowi x i y. Spróbuj ponownie.");
             }
         }
         
