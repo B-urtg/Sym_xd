@@ -24,7 +24,7 @@ public class Sym_xd {
             if (h + z <= (x * x)) {
                 validInput = true;
             } else {
-                System.out.println("Suma obiektow (human + zombie) musi byc mniejsza lub rwwna iloczynowi x i y. Sprobuj ponownie.");
+                System.out.println("Suma obiektow (human + zombie) musi byc mniejsza lub równa liczbie pól na mapie. Sprobuj ponownie.");
             }
         }
         

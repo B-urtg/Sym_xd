@@ -383,7 +383,7 @@ public class Symul {
         {
             System.out.println("Zwyciezaja ludzie po " + (tura - 1) + " turach!");
         }
-        else
+        if (humans_amount == 0)
         {
             System.out.println("Zwyciezaja zombie po " + (tura - 1) + " turach!");
         }
